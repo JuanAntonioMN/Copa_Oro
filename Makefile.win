@@ -1,0 +1,51 @@
+# Project: Copa Oro
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = Copa_Oro_private.res
+OBJ      = "Copa\ Oro.o" Equipo.o Sorteo.o Disenio.o Torneo.o Tabla.o Partidos.o $(RES)
+LINKOBJ  = "Copa Oro.o" Equipo.o Sorteo.o Disenio.o Torneo.o Tabla.o Partidos.o $(RES)
+LIBS     = -L"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib" -static-libgcc -lwinmm
+INCS     = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include"
+CXXINCS  = -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include" -I"C:/Program Files (x86)/Embarcadero/Dev-Cpp/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/9.2.0/include/c++"
+BIN      = "Copa Oro.exe"
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+"Copa\ Oro.o": Copa\ Oro.cpp
+	$(CPP) -c "Copa Oro.cpp" -o "Copa Oro.o" $(CXXFLAGS)
+
+Equipo.o: Equipo.cpp
+	$(CPP) -c Equipo.cpp -o Equipo.o $(CXXFLAGS)
+
+Sorteo.o: Sorteo.cpp
+	$(CPP) -c Sorteo.cpp -o Sorteo.o $(CXXFLAGS)
+
+Disenio.o: Disenio.cpp
+	$(CPP) -c Disenio.cpp -o Disenio.o $(CXXFLAGS)
+
+Torneo.o: Torneo.cpp
+	$(CPP) -c Torneo.cpp -o Torneo.o $(CXXFLAGS)
+
+Tabla.o: Tabla.cpp
+	$(CPP) -c Tabla.cpp -o Tabla.o $(CXXFLAGS)
+
+Partidos.o: Partidos.cpp
+	$(CPP) -c Partidos.cpp -o Partidos.o $(CXXFLAGS)
+
+Copa_Oro_private.res: Copa_Oro_private.rc 
+	$(WINDRES) -i Copa_Oro_private.rc --input-format=rc -o Copa_Oro_private.res -O coff 
+
